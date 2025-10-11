@@ -1,0 +1,28 @@
+<!-- Placeholder for QuickBooks Online ProAdvisor Badge -->
+<!-- 
+To obtain the official QuickBooks Online ProAdvisor badge:
+
+1. Visit: https://quickbooks.intuit.com/accountants/proadvisor/
+2. Complete the QuickBooks Online ProAdvisor certification
+3. Download your official badge from the ProAdvisor portal
+4. Replace this placeholder file with the official badge image
+
+Intuit provides these official badges for certified ProAdvisors:
+- QuickBooks Online ProAdvisor Badge (standard)
+- QuickBooks Online Advanced ProAdvisor Badge (for advanced certification)
+
+File should be:
+- PNG format for transparency
+- High resolution for web use
+- Dimensions approximately 200x200px or similar square format
+
+Official badge colors typically include:
+- Intuit blue (#0077C5)
+- Green accent colors
+- White background or transparent
+
+Important: Only use official badges provided by Intuit through the ProAdvisor program.
+Do not create custom badges or modify official badges.
+-->
+
+This file serves as a placeholder. Replace with your official QuickBooks Online ProAdvisor badge from Intuit.
