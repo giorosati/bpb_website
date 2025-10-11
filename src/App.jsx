@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import './App.css'
 import FAQ from './FAQ'
+import bpbPepperLogo from './assets/bpb_pepper.svg'
+import bpbLogoWhite from './assets/bpb_logo_white_72dpi.png'
+import quickbooksLogo from './assets/quickbooks-brand-preferred-logo-50-50-black-external.png'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -36,7 +39,7 @@ function App() {
       <nav className="navbar">
         <div className="nav-container">
           <div className="nav-logo" onClick={() => { setCurrentPage('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ cursor: 'pointer' }}>
-            <img src="/src/assets/bpb_pepper.svg" alt="Blue Pepper Bookkeeping" className="logo" />
+            <img src={bpbPepperLogo} alt="Blue Pepper Bookkeeping" className="logo" />
             <div className="logo-text">
               <div className="logo-text-line1">blue pepper</div>
               <div className="logo-text-line2">BOOKKEEPING</div>
@@ -78,7 +81,7 @@ function App() {
           </div>
           <div className="hero-image">
             <div className="hero-logo-box">
-              <img src="/src/assets/bpb_logo_white_72dpi.png" alt="Blue Pepper Bookkeeping Logo" className="hero-logo" />
+              <img src={bpbLogoWhite} alt="Blue Pepper Bookkeeping Logo" className="hero-logo" />
             </div>
           </div>
         </div>
@@ -97,7 +100,7 @@ function App() {
                 <p>All of our bookkeepers are certified QuickBooks Online ProAdvisors, ensuring you receive expert-level service and accurate financial management.</p>
               </div>
               <div className="certification-badges">
-                <img src="/src/assets/quickbooks-brand-preferred-logo-50-50-black-external.png" alt="QuickBooks Online ProAdvisor" className="certification-badge" />
+                <img src={quickbooksLogo} alt="QuickBooks Online ProAdvisor" className="certification-badge" />
               </div>
             </div>
           </div>
