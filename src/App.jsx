@@ -46,7 +46,7 @@ function App() {
           <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
             <a href="#" className="nav-link" onClick={(e) => { e.preventDefault(); setCurrentPage('home'); setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Home</a>
             <a href="#" className="nav-link" onClick={(e) => { e.preventDefault(); handleNavigation('services'); setIsMenuOpen(false); }}>Services</a>
-            <a href="#" className="nav-link" onClick={(e) => { e.preventDefault(); setCurrentPage('faq'); setIsMenuOpen(false); }}>FAQ</a>
+            <a href="#" className="nav-link" onClick={(e) => { e.preventDefault(); setCurrentPage('faq'); setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>FAQ</a>
             <a href="https://calendar.app.google/yZGeZbTnWyCTyr5N6" target="_blank" rel="noopener noreferrer" className="nav-link cta-link" onClick={() => setIsMenuOpen(false)}>Book a Free Consult</a>
             <a href="#" className="nav-link" onClick={(e) => { e.preventDefault(); handleNavigation('contact'); setIsMenuOpen(false); }}>Contact</a>
           </div>
