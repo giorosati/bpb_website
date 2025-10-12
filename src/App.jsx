@@ -6,9 +6,10 @@ import bpbLogoWhite from './assets/bpb_logo_white.svg'
 import quickbooksLogo from './assets/quickbooks-brand-preferred-logo-50-50-black-external.png'
 import socialLinkedIn from './assets/social_linkedin.svg'
 import socialFacebook from './assets/social_facebook.svg'
-import socialInstagram from './assets/social_instagram.svg'
-import socialTikTok from './assets/social_tiktok.svg'
-import socialBlueSky from './assets/social_bluesky.svg'
+// Temporarily hidden imports - uncomment to reactivate
+// import socialInstagram from './assets/social_instagram.svg'
+// import socialTikTok from './assets/social_tiktok.svg'
+// import socialBlueSky from './assets/social_bluesky.svg'
 import eLazaroPhoto from './assets/E_Lazaro.jpeg'
 import sDodsonPhoto from './assets/S_Dodson.jpeg'
 
@@ -194,6 +195,7 @@ function App() {
                 <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                   <img src={socialFacebook} alt="Facebook" className="social-icon" />
                 </a>
+                {/* Temporarily hidden - remove comments to reactivate
                 <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                   <img src={socialInstagram} alt="Instagram" className="social-icon" />
                 </a>
@@ -203,6 +205,7 @@ function App() {
                 <a href="#" target="_blank" rel="noopener noreferrer" aria-label="BlueSky">
                   <img src={socialBlueSky} alt="BlueSky" className="social-icon" />
                 </a>
+                */}
               </div>
             </div>
           </div>
