@@ -9,6 +9,8 @@ import socialFacebook from './assets/social_facebook.svg'
 import socialInstagram from './assets/social_instagram.svg'
 import socialTikTok from './assets/social_tiktok.svg'
 import socialBlueSky from './assets/social_bluesky.svg'
+import eLazaroPhoto from './assets/E_Lazaro.jpeg'
+import sDodsonPhoto from './assets/S_Dodson.jpeg'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -130,20 +132,20 @@ function App() {
       <section id="testimonials" className="testimonials-section">
         <div className="container testimonials-grid">
           <article className="testimonial-card" data-animate="fade-up" style={{'--delay': '0s'}}>
-            <div className="testimonial-quote">“Blue Pepper transformed our bookkeeping — we now get clear monthly reports and useful advice.”</div>
+            <div className="testimonial-quote">"Blue Pepper transformed our bookkeeping — we now get clear monthly reports and useful advice."</div>
             <div className="testimonial-meta">
-              <img src="/src/assets/avatar-placeholder-1.png" alt="Client avatar" className="testimonial-avatar" />
+              <img src={sDodsonPhoto} alt="S. Dodson" className="testimonial-avatar" />
               <div className="testimonial-person">
-                <div className="name">Ava Martinez</div>
-                <div className="role">Founder — Studio Nova</div>
+                <div className="name">S. Dodson</div>
+                <div className="role">Business Owner</div>
               </div>
             </div>
           </article>
 
           <article className="testimonial-card" data-animate="fade-up" style={{'--delay': '0.08s'}}>
-            <div className="testimonial-quote">“Giovanni was incredibly helpful getting our finances in order. From helping us develop an initial budget to keeping our books accurate and up-to-date. Highly recommended!”</div>
+            <div className="testimonial-quote">"Giovanni was incredibly helpful getting our finances in order. From helping us develop an initial budget to keeping our books accurate and up-to-date. Highly recommended!"</div>
             <div className="testimonial-meta">
-              <img src="/src/assets/E_Lazaro.jpeg" alt="Dr. Edmer Lazaro" className="testimonial-avatar" />
+              <img src={eLazaroPhoto} alt="Dr. Edmer Lazaro" className="testimonial-avatar" />
               <div className="testimonial-person">
                 <div className="name">Dr. Edmer Lazaro, PT, DPT, MSHCA</div>
                 <div className="role">Owner - Lazaro Physical Therapy</div>
