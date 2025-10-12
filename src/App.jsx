@@ -4,6 +4,11 @@ import FAQ from './FAQ'
 import bpbPepperLogo from './assets/bpb_pepper_alt.svg'
 import bpbLogoWhite from './assets/bpb_logo_white_72dpi_alt.png'
 import quickbooksLogo from './assets/quickbooks-brand-preferred-logo-50-50-black-external.png'
+import socialLinkedIn from './assets/social_linkedin.svg'
+import socialFacebook from './assets/social_facebook.svg'
+import socialInstagram from './assets/social_instagram.svg'
+import socialTikTok from './assets/social_tiktok.svg'
+import socialBlueSky from './assets/social_bluesky.svg'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -136,12 +141,12 @@ function App() {
           </article>
 
           <article className="testimonial-card" data-animate="fade-up" style={{'--delay': '0.08s'}}>
-            <div className="testimonial-quote">“Fast, accurate, and communicative — finally a bookkeeping partner we trust.”</div>
+            <div className="testimonial-quote">“Giovanni was incredibly helpful getting our finances in order. From helping us develop an initial budget to keeping our books accurate and up-to-date. Highly recommended!”</div>
             <div className="testimonial-meta">
-              <img src="/src/assets/avatar-placeholder-2.png" alt="Client avatar" className="testimonial-avatar" />
+              <img src="/src/assets/E_Lazaro.jpeg" alt="Dr. Edmer Lazaro" className="testimonial-avatar" />
               <div className="testimonial-person">
-                <div className="name">Liam O'Connor</div>
-                <div className="role">Owner — Elm & Co.</div>
+                <div className="name">Dr. Edmer Lazaro, PT, DPT, MSHCA</div>
+                <div className="role">Owner - Lazaro Physical Therapy</div>
               </div>
             </div>
           </article>
@@ -157,24 +162,46 @@ function App() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer id="contact" className="footer">
+      {/* Footer (with schema.org microdata for LocalBusiness) */}
+      <footer id="contact" className="footer" itemScope itemType="http://schema.org/LocalBusiness">
         <div className="container">
           <div className="footer-content">
-            <div className="footer-section">
-              <h3>Blue Pepper Bookkeeping</h3>
-              <p>Professional bookkeeping services for businesses and entrepreneurs.</p>
+            <div className="footer-col footer-col-logo">
+              <a href="/" aria-label="Blue Pepper Bookkeeping home">
+                <img src={bpbLogoWhite} alt="Blue Pepper logo" itemProp="logo" className="footer-logo" />
+              </a>
             </div>
-            <div className="footer-section">
+
+            <div className="footer-col footer-col-center">
+              <h3 itemProp="name">Blue Pepper Bookkeeping</h3>
+              <address itemProp="address" itemScope itemType="http://schema.org/PostalAddress" className="footer-address">
+                <span itemProp="streetAddress">164 Colchester Dr.</span><br />
+                <span itemProp="addressLocality">Iowa City</span>, <span itemProp="addressRegion">IA</span> <span itemProp="postalCode">52245</span>
+              </address>
+            </div>
+
+            
+            <div className="footer-col-contact">
               <h4>Contact Info</h4>
-              <p>Email: info@bluepepperbookkeeping.com</p>
-              <p>Phone: (415) 251-3512</p>
-            </div>
-            <div className="footer-section">
-              <h4>Services</h4>
-              <p>Monthly Bookkeeping</p>
-              <p>Financial Reports</p>
-              <p>Payroll Services</p>
+              <p><a href="mailto:info@bluepepperbookkeeping.com" itemProp="email">info@bluepepperbookkeeping.com</a></p>
+              <p><a href="tel:+14152513512" itemProp="telephone">(415) 251-3512</a></p>
+              <div className="footer-social">
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <img src={socialLinkedIn} alt="LinkedIn" className="social-icon" />
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                  <img src={socialFacebook} alt="Facebook" className="social-icon" />
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <img src={socialInstagram} alt="Instagram" className="social-icon" />
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                  <img src={socialTikTok} alt="TikTok" className="social-icon" />
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="BlueSky">
+                  <img src={socialBlueSky} alt="BlueSky" className="social-icon" />
+                </a>
+              </div>
             </div>
           </div>
           <div className="footer-bottom">

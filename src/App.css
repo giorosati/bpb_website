@@ -461,11 +461,45 @@ html, body {
   padding: 3rem 0 1rem;
 }
 
+:root {
+  --footer-link-color: #ffffff;
+  --footer-link-hover: #2b6cb0;
+  --footer-icon-bg: #ffffff;
+  --footer-icon-color: #111827;
+}
+
 .footer-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  /* three columns: logo | business info | contact */
+  grid-template-columns: 220px 1fr 260px;
   gap: 2rem;
+  align-items: center;
   margin-bottom: 2rem;
+}
+
+.footer-col {
+  display: block;
+}
+.footer-col-logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.footer-logo {
+  max-width: 160px;
+  height: auto;
+  display: block;
+}
+.footer-col-center {
+  text-align: center;
+}
+.footer-address {
+  color: #e6eef6;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+.footer-col-contact {
+  text-align: right;
 }
 
 .footer-section h3, .footer-section h4 {
@@ -483,6 +517,51 @@ html, body {
   padding-top: 1rem;
   text-align: center;
   opacity: 0.7;
+}
+
+/* Footer social icons */
+.footer-col-contact .footer-social {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+.footer-col-contact .footer-social a {
+  background: var(--footer-icon-bg);
+  color: var(--footer-icon-color);
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: transform .18s ease, color .18s ease, background .18s ease;
+  text-decoration: none;
+}
+.footer-col-contact .footer-social a:focus {
+  outline: 3px solid rgba(43,108,176,0.16);
+  outline-offset: 2px;
+}
+.footer-col-contact .footer-social a:hover {
+  transform: translateY(-3px);
+  color: var(--footer-link-hover);
+}
+.footer-col-contact .social-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+  fill: currentColor;
+}
+
+/* Footer contact link colors using variables */
+.footer-col-contact a,
+.footer-col-contact a:visited {
+  color: var(--footer-link-color);
+}
+.footer-col-contact a:hover,
+.footer-col-contact a:focus {
+  color: var(--footer-link-hover);
 }
 
 /* Mobile Responsive */
@@ -544,6 +623,27 @@ html, body {
     grid-template-columns: 1fr;
     gap: 2rem;
     text-align: center;
+  }
+
+  /* Footer: stack columns on mobile */
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .footer-col,
+  .footer-col-logo,
+  .footer-col-center,
+  .footer-col-contact {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Make social icons centered when stacked */
+  .footer-col-contact .footer-social {
+    justify-content: center;
   }
 
   .hero-title {
