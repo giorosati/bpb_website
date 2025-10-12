@@ -189,10 +189,10 @@ function App() {
               <p><a href="mailto:info@bluepepperbookkeeping.com" itemProp="email">info@bluepepperbookkeeping.com</a></p>
               <p><a href="tel:+14152513512" itemProp="telephone">(415) 251-3512</a></p>
               <div className="footer-social">
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/company/blue-pepper-bookkeeping/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                   <img src={socialLinkedIn} alt="LinkedIn" className="social-icon" />
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <a href="https://www.facebook.com/bluepepperbookkeeping" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                   <img src={socialFacebook} alt="Facebook" className="social-icon" />
                 </a>
                 {/* Temporarily hidden - remove comments to reactivate
