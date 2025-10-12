@@ -3,6 +3,7 @@ import './App.css'
 import FAQ from './FAQ'
 import bpbPepperLogo from './assets/bpb_pepper_alt.svg'
 import bpbLogoWhite from './assets/bpb_logo_white_paths.svg'
+import bpbLogoFooter from './assets/bpb_logo_footer.svg'
 import quickbooksLogo from './assets/quickbooks-brand-preferred-logo-50-50-black-external.png'
 import socialLinkedIn from './assets/social_linkedin.svg'
 import socialFacebook from './assets/social_facebook.svg'
@@ -137,8 +138,8 @@ function App() {
             <div className="testimonial-meta">
               <img src={sDodsonPhoto} alt="S. Dodson" className="testimonial-avatar" />
               <div className="testimonial-person">
-                <div className="name">Sherri Dodson</div>
-                <div className="role">Executive Drector 20xx to 20xx - Habitat for Humanity Maui</div>
+                <div className="name">S. Dodson</div>
+                <div className="role">Ext</div>
               </div>
             </div>
           </article>
@@ -171,7 +172,7 @@ function App() {
           <div className="footer-content">
             <div className="footer-col footer-col-logo">
               <a href="/" aria-label="Blue Pepper Bookkeeping home">
-                <img src={bpbLogoWhite} alt="Blue Pepper logo" itemProp="logo" className="footer-logo" />
+                <img src={bpbLogoFooter} alt="Blue Pepper logo" itemProp="logo" className="footer-logo" />
               </a>
             </div>
 
