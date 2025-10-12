@@ -235,7 +235,7 @@ html, body {
 .hero-logo-box {
   width: 100%;
   height: 400px;
-  background: linear-gradient(135deg, #2d3748, #4a5568);
+  background: #2d3748; /* match navbar background color */
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -337,6 +337,89 @@ html, body {
 .service-card p {
   color: #666;
   line-height: 1.6;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  padding: 3rem 0 2rem;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  align-items: stretch;
+}
+.testimonial-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(10, 20, 30, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 160px;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, opacity 0.5s ease;
+  opacity: 0;
+  transform: translateY(8px);
+}
+.testimonial-card[data-animate="fade-up"] {
+  animation: fadeUp 480ms cubic-bezier(.16,.84,.24,1) var(--delay, 0s) forwards;
+}
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(10, 20, 30, 0.10);
+}
+.testimonial-quote {
+  font-style: normal;
+  font-size: 1.05rem;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  line-height: 1.45;
+  position: relative;
+  padding-left: 1rem;
+}
+.testimonial-quote::before {
+  content: "“";
+  font-size: 2rem;
+  color: #2b6cb0;
+  position: absolute;
+  left: -6px;
+  top: -8px;
+  opacity: 0.95;
+}
+.testimonial-meta {
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+.testimonial-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #eee;
+}
+.testimonial-person .name {
+  font-weight: 700;
+  color: #111827;
+}
+.testimonial-person .role {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* CTA Section */

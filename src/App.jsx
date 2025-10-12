@@ -121,6 +121,32 @@ function App() {
           </div>
         </div>
       </section>
+      {/* Testimonials Section (added) */}
+      <section id="testimonials" className="testimonials-section">
+        <div className="container testimonials-grid">
+          <article className="testimonial-card" data-animate="fade-up" style={{'--delay': '0s'}}>
+            <div className="testimonial-quote">“Blue Pepper transformed our bookkeeping — we now get clear monthly reports and useful advice.”</div>
+            <div className="testimonial-meta">
+              <img src="/src/assets/avatar-placeholder-1.png" alt="Client avatar" className="testimonial-avatar" />
+              <div className="testimonial-person">
+                <div className="name">Ava Martinez</div>
+                <div className="role">Founder — Studio Nova</div>
+              </div>
+            </div>
+          </article>
+
+          <article className="testimonial-card" data-animate="fade-up" style={{'--delay': '0.08s'}}>
+            <div className="testimonial-quote">“Fast, accurate, and communicative — finally a bookkeeping partner we trust.”</div>
+            <div className="testimonial-meta">
+              <img src="/src/assets/avatar-placeholder-2.png" alt="Client avatar" className="testimonial-avatar" />
+              <div className="testimonial-person">
+                <div className="name">Liam O'Connor</div>
+                <div className="role">Owner — Elm & Co.</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section id="consult" className="cta-section">
