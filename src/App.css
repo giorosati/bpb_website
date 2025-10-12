@@ -37,8 +37,8 @@ html, body {
 
 /* Navigation */
 .navbar {
-  background: linear-gradient(135deg, #2d3748, #4a5568);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  background: #2d3748; /* navbar set to darker slate */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -59,9 +59,8 @@ html, body {
   align-items: center;
   gap: 1rem;
 }
-
 .nav-logo .logo {
-  height: 40px;
+  height: 48px; /* decreased size for the navbar logo */
   width: auto;
   object-fit: contain;
   max-width: none;
@@ -70,25 +69,25 @@ html, body {
 .logo-text {
   display: flex;
   flex-direction: column;
-  line-height: 1.1;
+  line-height: 1.175; /* reduced to half of previous increase */
   text-align: center;
 }
 
 .logo-text-line1 {
   font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.4rem; /* increased by ~15% */
   font-weight: 600;
-  color: #e2e8f0;
+  color: #fff; /* white text in navbar */
   letter-spacing: 0.5px;
 }
 
 .logo-text-line2 {
   font-family: 'Corbel', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.82rem; /* increased by ~15% */
   font-weight: 400;
-  color: #e2e8f0;
+  color: #fff; /* white text in navbar */
   letter-spacing: 1px;
-  margin-top: -2px;
+  margin-top: 1px; /* reduced spacing (half of previous change) */
 }
 
 .nav-menu {
@@ -99,7 +98,7 @@ html, body {
 
 .nav-link {
   text-decoration: none;
-  color: #e2e8f0;
+  color: #fff; /* white links in navbar */
   font-weight: 500;
   padding: 0.5rem 1rem;
   border-radius: 6px;
@@ -108,12 +107,12 @@ html, body {
 
 .nav-link:hover {
   color: #fff;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255,255,255,0.06);
 }
 
 .cta-link {
   background-color: #009933;
-  color: white !important;
+  color: #fff !important; /* keep CTA text white */
 }
 
 .cta-link:hover {
@@ -130,7 +129,7 @@ html, body {
 .nav-toggle .bar {
   width: 25px;
   height: 3px;
-  background-color: #e2e8f0;
+  background-color: #fff; /* white bars for visibility on light navbar */
   margin: 3px 0;
   transition: 0.3s;
   border-radius: 2px;
@@ -422,12 +421,12 @@ html, body {
     position: fixed;
     left: -100%;
     top: 70px;
-    flex-direction: column;
-    background: linear-gradient(135deg, #2d3748, #4a5568);
+  flex-direction: column;
+  background: #2d3748; /* mobile menu match navbar color */
     width: 100%;
     text-align: center;
     transition: left 0.3s ease;
-    box-shadow: 0 10px 27px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 27px rgba(0,0,0,0.08);
     padding: 2rem 0;
     z-index: 999;
     gap: 1rem;
@@ -442,6 +441,11 @@ html, body {
     cursor: pointer;
   }
 
+  /* Reduce logo size on mobile to avoid crowding */
+  .nav-logo .logo {
+    height: 40px;
+  }
+
   .nav-link {
     padding: 1rem 2rem;
     border-radius: 8px;
@@ -450,7 +454,7 @@ html, body {
   }
 
   .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.04);
   }
 
   .hero-container {
@@ -645,3 +649,4 @@ html, body {
     font-size: 2rem;
   }
 }
+

@@ -35,8 +35,8 @@ function App() {
 
   return (
     <div className="app">
-      {/* Navigation Bar */}
-      <nav className="navbar">
+  {/* Navigation Bar */}
+  <nav className="navbar">
         <div className="nav-container">
           <div className="nav-logo" onClick={() => { setCurrentPage('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ cursor: 'pointer' }}>
             <img src={bpbPepperLogo} alt="Blue Pepper Bookkeeping" className="logo" />
