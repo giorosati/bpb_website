@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import './App.css'
 import FAQ from './FAQ'
-import bpbPepperLogo from './assets/bpb_pepper.svg'
-import bpbLogoWhite from './assets/bpb_logo_white_72dpi.png'
+import bpbPepperLogo from './assets/bpb_pepper_alt.svg'
+import bpbLogoWhite from './assets/bpb_logo_white_72dpi_alt.png'
 import quickbooksLogo from './assets/quickbooks-brand-preferred-logo-50-50-black-external.png'
 
 function App() {
