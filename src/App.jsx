@@ -133,12 +133,12 @@ function App() {
       <section id="testimonials" className="testimonials-section">
         <div className="container testimonials-grid">
           <article className="testimonial-card" data-animate="fade-up" style={{'--delay': '0s'}}>
-            <div className="testimonial-quote">"Blue Pepper transformed our bookkeeping — we now get clear monthly reports and useful advice."</div>
+            <div className="testimonial-quote">Giovanni was an invaluable and trusted member of Habitat for Humanity Maui for several years. Initially, Giovanni served on the board of directors, followed by a tenure as Board President, and then assisted with our accounting and grant management as the organization experienced significant growth.</div>
             <div className="testimonial-meta">
               <img src={sDodsonPhoto} alt="S. Dodson" className="testimonial-avatar" />
               <div className="testimonial-person">
                 <div className="name">Sherri Dodson</div>
-                <div className="role">Executive Drector 20xx to 20xx - Habitat for Humanity Maui</div>
+                <div className="role">Executive Director - Habitat for Humanity Maui, 2004 - 2024</div>
               </div>
             </div>
           </article>
