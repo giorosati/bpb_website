@@ -20,15 +20,34 @@ jobs:
           cat changed.txt || true
           echo "EOF" >> $GITHUB_OUTPUT
 
-      - name: Scan for dangerous upload paths
+      - name: Scan changed workflow files for dangerous patterns
         if: steps.changed.outputs.changed_files != ''
         run: |
           set -euo pipefail
-          grep -Hn "path:\s*['\"]?\.['\"]?" .github/workflows/* || true
-          if grep -R "path:\s*['\"]?\.['\"]?" .github/workflows/; then
-            echo "\nError: A workflow is attempting to upload the repository root (path: '.') to GitHub Pages. This will overwrite built assets and break the site.\n" >&2
+          echo "Scanning changed workflows for: path: '.' or actions/configure-pages@v5 without a build/upload of ./dist"
+          DANGEROUS=0
+          # Check for path: '.' anywhere
+          if grep -R --line-number "path:\s*['\"]?\.['\"]?" .github/workflows/; then
+            echo "\nError: Found a workflow that uploads the repository root (path: '.'). This will overwrite built assets.\n" >&2
+            DANGEROUS=1
+          fi
+
+          # Check for configure-pages usage without a preceding build and upload artifact step in the same file
+          for f in .github/workflows/*.yml .github/workflows/*.yaml; do
+            if [ -f "$f" ]; then
+              if grep -q "actions/configure-pages@v5" "$f" || grep -q "actions/configure-pages@v4" "$f"; then
+                # If the workflow contains configure-pages but does not contain npm run build and upload-pages-artifact
+                if ! grep -q "npm run build" "$f" || ! grep -q "upload-pages-artifact" "$f"; then
+                  echo "\nWarning: $f uses actions/configure-pages but does not appear to run 'npm run build' and 'upload-pages-artifact'. This can result in publishing the repo root or incorrect artifacts.\n" >&2
+                  DANGEROUS=1
+                fi
+              fi
+            fi
+          done
+
+          if [ "$DANGEROUS" -ne 0 ]; then
             exit 1
           fi
 
       - name: Success
-        run: echo "No dangerous workflow upload paths detected."
+        run: echo "No dangerous workflow patterns detected."
