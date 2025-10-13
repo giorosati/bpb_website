@@ -1,8 +1,13 @@
 name: Deploy to GitHub Pages
 
+# This workflow runs after the `Verify dist before deploy` workflow completes
+# (so deploy only happens when verify-dist passes). Manual dispatch is still
+# supported via workflow_dispatch.
 on:
-  push:
-    branches: [ master ]
+  workflow_run:
+    workflows: ["Verify dist before deploy"]
+    types:
+      - completed
   workflow_dispatch:
 
 permissions:
@@ -16,6 +21,8 @@ concurrency:
 
 jobs:
   build:
+    # Only proceed when the triggering workflow concluded successfully
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
