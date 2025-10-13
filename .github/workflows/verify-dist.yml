@@ -60,3 +60,4 @@ jobs:
         with:
           name: verified-dist
           path: ./dist
+          retention-days: 30

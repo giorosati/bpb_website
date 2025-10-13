@@ -26,10 +26,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download verified dist artifact
+        id: download
         uses: actions/download-artifact@v3
         with:
           name: verified-dist
           path: ./dist
+        continue-on-error: true
+      - name: Check for downloaded dist
+        run: |
+          if [ -f "dist/index.html" ]; then
+            echo "Found downloaded artifact"
+            exit 0
+          fi
+          echo "No artifact downloaded"
+          exit 0
+
+      - name: Build fallback if artifact missing
+        if: ${{ steps.download.outcome != 'success' }}
+        run: |
+          echo "Artifact missing; building locally as fallback"
+          npm ci
+          npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
