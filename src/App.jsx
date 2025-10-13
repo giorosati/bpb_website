@@ -77,10 +77,9 @@ function App() {
           <section id="home" className="hero">
         <div className="hero-container">
           <div className="hero-content">
-            <h1 className="hero-title">Professional Bookkeeping for Your Business</h1>
+            <h1 className="hero-title">Professional Bookkeeping for Business Owners and Nonprofits</h1>
             <p className="hero-subtitle">
-              Focus on growing your business while we handle your books with precision and care. 
-              Trusted by entrepreneurs and small businesses.
+              Focus on growing while we handle your books with precision and care. 
             </p>
             <div className="hero-buttons">
               <a href="https://calendar.app.google/yZGeZbTnWyCTyr5N6" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Get Free Consultation</a>
