@@ -38,3 +38,19 @@ jobs:
             exit 1
           fi
           echo "dist verification passed"
+
+      - name: Smoke test dist/index.html
+        run: |
+          # Basic HTML smoke tests: ensure root element and a script tag referencing assets exist
+          if ! grep -q "<div[^>]*id=\"root\"" dist/index.html; then
+            echo "dist/index.html does not contain a root element with id=\"root\"" >&2
+            exit 1
+          fi
+          if ! grep -q "<script[^>]*src=\"/assets/\|/src/main" dist/index.html; then
+            # If neither a built asset script nor a dev src script is present, fail
+            if ! grep -q "<script" dist/index.html; then
+              echo "dist/index.html does not contain a script tag" >&2
+              exit 1
+            fi
+          fi
+          echo "Smoke test passed: root element and script tag present"

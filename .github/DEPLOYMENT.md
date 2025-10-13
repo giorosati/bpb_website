@@ -38,3 +38,15 @@ If anything unexpected happens during deployment, open an issue and include:
 - the failing workflow run URL
 - the error messages from the Build or Upload steps
 - the commit SHA being deployed
+
+Pages UI quick-check (what to verify in GitHub Settings → Pages)
+
+1. Custom domain: should be set to `bluepepperbookkeeping.com`. This is equivalent
+  to having `public/CNAME` in the repo, but confirm the Pages settings page shows
+  the same domain.
+2. Enforce HTTPS: enable this checkbox so visitors are redirected to HTTPS.
+3. Source: Verify the "Build and deployment" section indicates "GitHub Actions".
+  If a different source is shown (or a previous Pages deployment artifact exists),
+  the site may serve stale or wrong content.
+4. Check the latest deployment details: click the Pages URL and open the
+  "View deployment
