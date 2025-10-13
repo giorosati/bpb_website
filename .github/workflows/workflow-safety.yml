@@ -1,0 +1,34 @@
+name: Workflow safety check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  validate-workflows:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v4
+
+      - name: Find changed workflow files
+        id: changed
+        run: |
+          git fetch --no-tags origin ${{ github.event.pull_request.base.ref }}
+          git diff --name-only origin/${{ github.event.pull_request.base.ref }}...HEAD -- .github/workflows/ > changed.txt || true
+          echo "changed_files<<EOF" >> $GITHUB_OUTPUT
+          cat changed.txt || true
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Scan for dangerous upload paths
+        if: steps.changed.outputs.changed_files != ''
+        run: |
+          set -euo pipefail
+          grep -Hn "path:\s*['\"]?\.['\"]?" .github/workflows/* || true
+          if grep -R "path:\s*['\"]?\.['\"]?" .github/workflows/; then
+            echo "\nError: A workflow is attempting to upload the repository root (path: '.') to GitHub Pages. This will overwrite built assets and break the site.\n" >&2
+            exit 1
+          fi
+
+      - name: Success
+        run: echo "No dangerous workflow upload paths detected."
