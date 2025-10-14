@@ -39,6 +39,13 @@ jobs:
           fi
           echo "dist verification passed"
 
+      - name: Debug dist contents before upload
+        run: |
+          echo "Listing dist/ directory before upload:";
+          ls -la dist || true
+          echo "Listing dist/assets/:";
+          ls -la dist/assets || true
+
       - name: Smoke test dist/index.html
         run: |
           # Basic HTML smoke tests: ensure root element and a script tag referencing assets exist
