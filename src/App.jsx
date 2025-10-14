@@ -220,6 +220,7 @@ function App() {
       {currentPage === 'faq' && <FAQ />}
     </div>
   )
+  // temp comment to force a change
 }
 
 export default App
