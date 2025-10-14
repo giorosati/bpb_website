@@ -1,3 +1,155 @@
+name: Deploy to GitHub Pages
+
+# Minimal robust deploy workflow that supports both:
+# - workflow_run from Verify dist before deploy (downloads verified artifact)
+# - manual workflow_dispatch (builds locally as fallback)
+on:
+  workflow_run:
+    workflows: ["Verify dist before deploy"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    # Run either when manually dispatched OR when the triggering workflow succeeded
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Try download verified dist artifact (only for workflow_run)
+        if: ${{ github.event_name == 'workflow_run' }}
+        id: download
+        uses: actions/download-artifact@v4
+        with:
+          name: verified-dist
+          path: ./dist
+          run-id: ${{ github.event.workflow_run.id }}
+        continue-on-error: true
+
+      - name: Check for downloaded dist
+        run: |
+          if [ -f "dist/index.html" ]; then
+            echo "Found downloaded artifact"
+            exit 0
+          fi
+          echo "No artifact downloaded"
+          exit 0
+
+      - name: Debug downloaded files
+        if: ${{ always() }}
+        run: |
+          echo "download.outcome=${{ steps.download.outcome }}"
+          ls -la ./dist || true
+          ls -la ./dist/assets || true
+
+      - name: Build fallback if artifact missing
+        if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'workflow_run' && steps.download.outcome != 'success') }}
+        run: |
+          echo "Artifact missing; building locally as fallback"
+          npm ci
+          npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+name: Deploy to GitHub Pages
+
+# This workflow either runs after the `Verify dist before deploy` workflow
+# completes successfully (recommended), or can be manually dispatched.
+on:
+  workflow_run:
+    workflows: ["Verify dist before deploy"]
+    types:
+      - completed
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    # Proceed when the triggering workflow concluded successfully OR when
+    # manually dispatched. Manual dispatch doesn't set github.event.workflow_run
+    # so the previous condition caused the job to be skipped on workflow_dispatch.
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Try download verified dist artifact (only for workflow_run)
+        if: ${{ github.event_name == 'workflow_run' }}
+        id: download
+        uses: actions/download-artifact@v4
+        with:
+          name: verified-dist
+          path: ./dist
+          run-id: ${{ github.event.workflow_run.id }}
+        continue-on-error: true
+
+      - name: Check for downloaded dist
+        run: |
+          if [ -f "dist/index.html" ]; then
+            echo "Found downloaded artifact"
+            exit 0
+          fi
+          echo "No artifact downloaded"
+          exit 0
+
+      - name: Debug downloaded files
+        if: ${{ always() }}
+        run: |
+          echo "download.outcome=${{ steps.download.outcome }}"
+          ls -la ./dist || true
+          ls -la ./dist/assets || true
+
+      - name: Build fallback if artifact missing
+        if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'workflow_run' && steps.download.outcome != 'success') }}
+        run: |
+          echo "Artifact missing; building locally as fallback"
+          npm ci
+          npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 name: Build and Deploy to GitHub Pages
 
 on:
@@ -88,14 +240,27 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+<<<<<<< HEAD
   prepare:
+=======
+  build:
+    # Proceed when the triggering workflow concluded successfully OR when
+    # manually dispatched. Manual dispatch doesn't set github.event.workflow_run
+    # so the previous condition caused the job to be skipped on workflow_dispatch.
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+>>>>>>> d665894 (ci(workflows): allow manual dispatch and guard artifact download/build fallback)
     runs-on: ubuntu-latest
     if: ${{ (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') || github.event_name == 'workflow_dispatch' }}
     steps:
+<<<<<<< HEAD
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Download verified-dist artifact (from triggering run)
+=======
+      - name: Download verified dist artifact
+        if: ${{ github.event_name == 'workflow_run' }}
+>>>>>>> d665894 (ci(workflows): allow manual dispatch and guard artifact download/build fallback)
         id: download
         uses: actions/download-artifact@v4
         with:
@@ -183,8 +348,13 @@ jobs:
           echo "List dist (root):"; ls -la ./dist || true
           echo "List dist/assets:"; ls -la ./dist/assets || true
 
+<<<<<<< HEAD
       - name: Build fallback (if artifact missing)
         if: ${{ steps.download.outcome != 'success' }}
+=======
+      - name: Build fallback if artifact missing
+        if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'workflow_run' && steps.download.outcome != 'success') }}
+>>>>>>> d665894 (ci(workflows): allow manual dispatch and guard artifact download/build fallback)
         run: |
           echo "Artifact missing; building locally as fallback"
           npm ci
