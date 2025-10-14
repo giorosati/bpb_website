@@ -56,7 +56,8 @@ jobs:
           echo "Smoke test passed: root element and script tag present"
 
       - name: Upload verified dist artifact
-        uses: actions/upload-artifact@v3
+        # Update to v4 to avoid deprecation/auto-failure
+        uses: actions/upload-artifact@v4
         with:
           name: verified-dist
           path: ./dist

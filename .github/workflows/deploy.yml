@@ -27,7 +27,8 @@ jobs:
     steps:
       - name: Download verified dist artifact
         id: download
-        uses: actions/download-artifact@v3
+        # Update to v4 to prevent automatic failure on deprecated action versions
+        uses: actions/download-artifact@v4
         with:
           name: verified-dist
           path: ./dist
