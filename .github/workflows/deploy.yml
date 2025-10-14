@@ -32,6 +32,9 @@ jobs:
         with:
           name: verified-dist
           path: ./dist
+          # When triggered by workflow_run, explicitly request artifacts from the
+          # triggering run so download-artifact can find them.
+          run-id: ${{ github.event.workflow_run.id }}
         continue-on-error: true
       - name: Check for downloaded dist
         run: |
@@ -41,6 +44,14 @@ jobs:
           fi
           echo "No artifact downloaded"
           exit 0
+
+      - name: Debug downloaded files
+        if: ${{ always() }}
+        run: |
+          echo "List dist directory:";
+          ls -la ./dist || true
+          echo "List dist/assets:";
+          ls -la ./dist/assets || true
 
       - name: Build fallback if artifact missing
         if: ${{ steps.download.outcome != 'success' }}
