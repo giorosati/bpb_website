@@ -1,0 +1,4 @@
+<!-- This is a placeholder for og-image.png -->
+<!-- You'll need to replace this with your actual logo image -->
+<!-- The image should be 1200x630px for optimal social media sharing -->
+<!-- Place your og-image.png file in the public/ directory -->
